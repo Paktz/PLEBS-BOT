@@ -1,4 +1,3 @@
-from email import message
 import discord
 from discord.utils import get
 from discord.ext import commands
@@ -20,7 +19,7 @@ async def on_ready():
     print(f"Logged in as {bot.user}")
 
 
-@bot.command() 
+@bot.command()
 async def help(ctx):
     em = discord.Embed(title='Commands', description='These are our commands choose wisely :)',color=0xF90716)
     em.add_field(name='?p  or ?play',value='play the song',inline=False)
@@ -30,34 +29,7 @@ async def help(ctx):
     em.add_field(name='?re or ?resume',value='rezoom the music',inline=False)
     em.add_field(name='?c or ?clear',value='Delete all Qed music',inline=False)
     em.add_field(name='?le or ?leave',value='Kick my ass out of the room',inline=False)
-    em.add_field(name='?PLL',value='PLL Algorithms',inline=False)
-    await ctx.channel.send(embed=em)
-
-
-@bot.command() 
-async def PLL(ctx):
-    em = discord.Embed(title='Permutation of Last Layer', description='Permutation of Last Layer(PLL) the last step of CFOP Method',color=0xF90716)
-    em.add_field(name="Aa",value=" x L2 D2 L' U' L D2 L' U L' ",inline=False)
-    em.add_field(name="Ab",value=" x' L2 D2 L U L' D2 L U' L ",inline=True)
-    em.add_field(name="F",value=" R' U' F' R U R' U' R' F R2 U' R' U' R U R' U R ",inline=False)
-    em.add_field(name="Ga",value=" R2 U R' U R' U' R U' R2 U' D R' U R D' ",inline=False)
-    em.add_field(name="Gb",value=" R' U' R U D' R2 U R' U R U' R U' R2 D ",inline=True)
-    em.add_field(name="Gc",value=" R2 U' R U' R U R' U R2 U D' R U' R' D ",inline=False)
-    em.add_field(name="Gd",value=" R U R' U' D R2 U' R U' R' U R' U R2 D' ",inline=True)
-    em.add_field(name="Ja",value=" x R2 F R F' R U2 r' U r U2 ",inline=False)
-    em.add_field(name="Jb",value=" R U R' F' R U R' U' R' F R2 U' R' ",inline=True)
-    em.add_field(name="Ra",value=" R U' R' U' R U R D R' U' R D' R' U2 R' ",inline=False)
-    em.add_field(name="Rb",value=" R2 F R U R U' R' F' R U2 R' U2 R ",inline=False)
-    em.add_field(name="T",value=" R U R' U' R' F R2 U' R' U' R U R' F' ",inline=False)
-    em.add_field(name="E",value=" x' L' U L D' L' U' L D L' U' L D' L' U L D ",inline=False)
-    em.add_field(name="Na",value=" R U R' U R U R' F' R U R' U' R' F R2 U' R' U2 R U' R' ",inline=False)
-    em.add_field(name="Nb",value=" R' U R U' R' F' U' F R U R' F R' F' R U' R",inline=True)
-    em.add_field(name="V",value=" R' U R' U' y R' F' R2 U' R' U R' F R F ",inline=False)
-    em.add_field(name="Y",value=" F R U' R' U' R U R' F' R U R' U' R' F R F' ",inline=False)
-    em.add_field(name="H",value=" M2 U M2 U2 M2 U M2 ",inline=False)
-    em.add_field(name="Ua",value=" M2 U M U2 M' U M2 ",inline=False)
-    em.add_field(name="Ub",value=" M2 U' M U2 M' U' M2 ",inline=False)
-    em.add_field(name="Z",value=" M' U M2 U M2 U M' U2 M2 ",inline=False)
+    
     await ctx.channel.send(embed=em)
 #play
 @bot.command() 
@@ -111,5 +83,25 @@ async def clear(ctx):
 @bot.command()
 async def c(ctx):
     await songsInstance.clear(ctx)
+
+
+############# chat bot
+
+@bot.event
+async def on_message(message):
+    if message.content == '555' :
+        await message.channel.send('So funny huh.')
+
+@bot.event
+async def on_message(message):
+    if message.content == 'What are you doing' :
+        await message.channel.send('Nothing.')
+        
+@bot.event
+async def on_message(message):
+    if message.content == '' :
+        await message.channel.send('Nothing')
+  
+
 
 bot.run(token)
